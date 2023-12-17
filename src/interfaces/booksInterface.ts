@@ -4,7 +4,7 @@ export interface IBooksInterface {
     pages: number;
     category?: string | undefined;
     createdAt: Date ; 
-    updateAt: Date;
+    updatedAt: Date;
 }
 
 export type CreateData = Pick<IBooksInterface, "name" | "pages" | "category" >

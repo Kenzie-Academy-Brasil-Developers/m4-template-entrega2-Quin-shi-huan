@@ -10,14 +10,13 @@ const booksControllers = new BooksControllers()
 const createdIsTrue = new CreateIsTrue()
 
 
-booksRouter.get("/", booksControllers.getBooks  )
-
-booksRouter.post("/",createdIsTrue.checkingIfBookNameIsNotRepeat ,booksControllers.createBook )
+booksRouter.get("/", booksControllers.getBooks)
 
 booksRouter.get("/:id", IsBookIdValid.execute ,  booksControllers.getOneBook )
 
-booksRouter.use("/:id" , createdIsTrue.checkIfBookIsCreated , createdIsTrue.checkingIfBookNameIsNotRepeat )
+booksRouter.post("/",createdIsTrue.checkingIfBookNameIsNotRepeat ,booksControllers.createBook )
 
+booksRouter.use("/:id" , createdIsTrue.checkingIfBookNameIsNotRepeat )
 
 booksRouter.patch("/:id",IsBookIdValid.execute , booksControllers.updateBooks)
 

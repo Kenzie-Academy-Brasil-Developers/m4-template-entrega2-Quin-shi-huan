@@ -18,7 +18,7 @@ export class BooksServices{
             id: generateId(),
             ...data,
             createdAt: new Date(),
-            updateAt: new Date()
+            updatedAt: new Date()
         }
 
         booksDatabase.push(newBook)
@@ -32,7 +32,7 @@ export class BooksServices{
             ...booksDatabase[index],
             ...data ,
             createdAt : new Date(),
-            updateAt : new Date()
+            updatedAt : new Date()
         }
        
 
