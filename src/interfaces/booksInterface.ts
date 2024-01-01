@@ -1,15 +1,11 @@
-export interface IBooksInterface {
-    id: number;
-    name: string;
-    pages: number;
-    category?: string | undefined;
-    createdAt: Date ; 
-    updatedAt: Date;
-}
+import { z } from "zod"
+import { bookSchema, createBookBodySchema, editBookBodySchema } from "../schemas/books.schema";
 
-export type CreateData = Pick<IBooksInterface, "name" | "pages" | "category" >
+export type TBook = z.infer<typeof bookSchema>
 
-export type createOptionalData = Partial<IBooksInterface>;
+export type TCreateBookBody = z.infer<typeof createBookBodySchema>
+
+export type TEditBodySchema = z.infer<typeof editBookBodySchema>
 
 export type DeleteMessage = {
     message : string

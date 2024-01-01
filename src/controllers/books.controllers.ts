@@ -2,10 +2,11 @@ import { Request, Response } from "express";
 import { BooksServices } from "../services/books.services";
 
 export class BooksControllers{
-    getBooks(req: Request , res: Response) : Response{
+    getBooks(req: Request , res: Response) : Response{ 
+        console.log(req.query)
         const booksServices = new BooksServices()
 
-        const response = booksServices.getBooks()
+        const response = booksServices.getBooks(req.query.search as string)
 
         return res.status(200).json(response)
     }

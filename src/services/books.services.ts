@@ -1,49 +1,55 @@
 import { booksDatabase } from "../database/database";
-import { CreateData, IBooksInterface, createOptionalData, generateId } from "../interfaces/booksInterface"
+import { TBook, TCreateBookBody, TEditBodySchema, generateId } from "../interfaces/booksInterface"
 
-export class BooksServices{
+export class BooksServices {
 
-    getBooks() {
+    getBooks(search? : string) {
+        console.log(search)
+        if (search) {
+            console.log("entrei")
+            const searchValue = booksDatabase.filter(book => book.name.toLowerCase().includes(search.toLowerCase()))
+
+            return searchValue
+         }
+
         return booksDatabase
     }
 
-    getOneBook(id : string  ){
+    getOneBook(id: string) {
         const findBook = booksDatabase.find(book => book.id === Number(id))
 
         return findBook
     }
 
-    createBook = (data: CreateData) : IBooksInterface => {
-        const newBook : IBooksInterface =  {
+    createBook = (data: TCreateBookBody): TBook => {
+        const newBook: TBook = {
             id: generateId(),
             ...data,
             createdAt: new Date(),
-            updatedAt: new Date()
+            updatedAt: new Date(),
         }
 
         booksDatabase.push(newBook)
         return newBook
     }
 
-    updateBook(id: string , data : createOptionalData): IBooksInterface{
-        const index : number = booksDatabase.findIndex(book => book.id === Number(id))
+    updateBook(id: string, data: TEditBodySchema): TBook {
+        const index: number = booksDatabase.findIndex(book => book.id === Number(id))
 
-        const updateBook: IBooksInterface = {
+        const updateBook: TBook = {
             ...booksDatabase[index],
-            ...data ,
-            createdAt : new Date(),
-            updatedAt : new Date()
+            ...data,
         }
-       
 
-        booksDatabase.splice(index , 1 , updateBook)
+
+        booksDatabase.splice(index, 1, updateBook)
         return updateBook
     }
 
-    deleteBook(id : string){
+    deleteBook(id: string) {
         const index = booksDatabase.findIndex(book => book.id === Number(id))
 
-        booksDatabase.splice(index , 1)
+        booksDatabase.splice(index, 1)
     }
 
 
