@@ -4,9 +4,7 @@ import { TBook, TCreateBookBody, TEditBodySchema, generateId } from "../interfac
 export class BooksServices {
 
     getBooks(search? : string) {
-        console.log(search)
         if (search) {
-            console.log("entrei")
             const searchValue = booksDatabase.filter(book => book.name.toLowerCase().includes(search.toLowerCase()))
 
             return searchValue
