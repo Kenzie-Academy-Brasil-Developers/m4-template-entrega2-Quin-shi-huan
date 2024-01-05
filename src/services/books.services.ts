@@ -3,12 +3,12 @@ import { TBook, TCreateBookBody, TEditBodySchema, generateId } from "../interfac
 
 export class BooksServices {
 
-    getBooks(search? : string) {
+    getBooks(search?: string) {
         if (search) {
             const searchValue = booksDatabase.filter(book => book.name.toLowerCase().includes(search.toLowerCase()))
 
             return searchValue
-         }
+        }
 
         return booksDatabase
     }

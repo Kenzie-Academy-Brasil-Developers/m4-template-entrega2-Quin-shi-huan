@@ -20,8 +20,8 @@ export class ValidateRequest {
 
             if (schemas.query) {
                 req.query = await schemas.query.parseAsync(req.query)
-            } 
-            
+            }
+
             next()
         }
     }

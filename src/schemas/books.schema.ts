@@ -9,6 +9,6 @@ export const bookSchema = z.object({
     updatedAt: z.date().optional(),
 })
 
-export const createBookBodySchema = bookSchema.omit({id : true , createdAt : true , updatedAt : true})
+export const createBookBodySchema = bookSchema.omit({ id: true, createdAt: true, updatedAt: true })
 
-export const editBookBodySchema = bookSchema.omit({id : true}).partial({name : true , pages : true})
+export const editBookBodySchema = bookSchema.omit({ id: true, createdAt: true, updatedAt: true }).partial({ name: true, pages: true })

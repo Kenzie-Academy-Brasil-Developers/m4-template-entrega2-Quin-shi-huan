@@ -11,6 +11,6 @@ app.use(json());
 
 app.use(helmet())
 
-app.use("/books" , booksRouter)
+app.use("/books", booksRouter)
 
 app.use(HandleErrors.execute)

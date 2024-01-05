@@ -15,20 +15,20 @@ const createdIsTrue = new CreateIsTrue()
 booksRouter.get("/", booksControllers.getBooks)
 
 
-booksRouter.get("/:id", IsBookIdValid.execute ,  booksControllers.getOneBook )
+booksRouter.get("/:id", IsBookIdValid.execute, booksControllers.getOneBook)
 
 
-booksRouter.post("/",ValidateRequest.execute({
-    body : createBookBodySchema
-}) , createdIsTrue.checkingIfBookNameIsNotRepeat,booksControllers.createBook )
+booksRouter.post("/", ValidateRequest.execute({
+    body: createBookBodySchema
+}), createdIsTrue.checkingIfBookNameIsNotRepeat, booksControllers.createBook)
 
 
-booksRouter.use("/:id" , createdIsTrue.checkingIfBookNameIsNotRepeat )
+booksRouter.use("/:id", createdIsTrue.checkingIfBookNameIsNotRepeat)
 
 
 booksRouter.patch("/:id", ValidateRequest.execute({
-    body : editBookBodySchema
-}) ,IsBookIdValid.execute,booksControllers.updateBooks)
+    body: editBookBodySchema
+}), IsBookIdValid.execute, booksControllers.updateBooks)
 
 
-booksRouter.delete("/:id", IsBookIdValid.execute ,  booksControllers.deleteBook )
+booksRouter.delete("/:id", IsBookIdValid.execute, booksControllers.deleteBook)

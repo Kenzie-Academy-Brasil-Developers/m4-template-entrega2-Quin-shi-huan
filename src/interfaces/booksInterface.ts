@@ -8,7 +8,7 @@ export type TCreateBookBody = z.infer<typeof createBookBodySchema>
 export type TEditBodySchema = z.infer<typeof editBookBodySchema>
 
 export type DeleteMessage = {
-    message : string
+    message: string
 }
 
 let id = 0;

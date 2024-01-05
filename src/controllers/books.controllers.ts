@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { BooksServices } from "../services/books.services";
 
-export class BooksControllers{
-    getBooks(req: Request , res: Response) : Response{ 
+export class BooksControllers {
+    getBooks(req: Request, res: Response): Response {
         console.log(req.query)
         const booksServices = new BooksServices()
 
@@ -11,7 +11,7 @@ export class BooksControllers{
         return res.status(200).json(response)
     }
 
-    getOneBook(req: Request , res: Response) : Response{
+    getOneBook(req: Request, res: Response): Response {
         const booksServices = new BooksServices()
 
         const response = booksServices.getOneBook(req.params.id)
@@ -19,31 +19,30 @@ export class BooksControllers{
         return res.status(200).json(response)
     }
 
-    createBook(req: Request , res: Response) : Response{
+    createBook(req: Request, res: Response): Response {
         const booksServices = new BooksServices()
 
         const response = booksServices.createBook(req.body)
-        
+
         return res.status(201).json(response)
     }
 
-    // REVISAR
-    updateBooks(req: Request , res: Response) : Response{ 
+    updateBooks(req: Request, res: Response): Response {
         const booksServices = new BooksServices()
 
-        const response = booksServices.updateBook(req.params.id , req.body)
+        const response = booksServices.updateBook(req.params.id, req.body)
 
         return res.status(200).json(response)
     }
 
-    deleteBook(req: Request , res: Response) : Response{
+    deleteBook(req: Request, res: Response): Response {
         const booksServices = new BooksServices()
 
-       booksServices.deleteBook(req.params.id)
+        booksServices.deleteBook(req.params.id)
 
-       return res.status(204).json({ message : "Livro excluido com sucessso"})
+        return res.status(204).json({ message: "Livro excluido com sucessso" })
 
     }
 
-    
+
 }
