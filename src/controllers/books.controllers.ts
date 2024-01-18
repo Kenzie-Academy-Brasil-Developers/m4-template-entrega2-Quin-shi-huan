@@ -3,7 +3,6 @@ import { BooksServices } from "../services/books.services";
 
 export class BooksControllers {
     getBooks(req: Request, res: Response): Response {
-        console.log(req.query)
         const booksServices = new BooksServices()
 
         const response = booksServices.getBooks(req.query.search as string)
